@@ -50,7 +50,7 @@ Then open **Gmail → Drafts**, read each pitch, edit it, and send it yourself.
 
 ## Tips
 
-- **Start small:** run 5–10 leads at a time (max 20). It's faster and uses less of your plan's limit.
+- **Start small:** run 5–10 leads at a time (max 30). It's faster and uses less of your plan's limit.
 - **Check before you send:** every lead has a source link. Click it to confirm the business is real and the problem is accurate. AI search can be outdated.
 - **Follow up once:** the sheet sets a follow-up date 4 days after each lead is found.
 - **Update the "Pitch status" column** as you go: Not contacted → Sent → Replied → Meeting booked → Won / Lost.
