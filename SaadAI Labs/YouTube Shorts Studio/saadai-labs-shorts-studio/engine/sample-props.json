@@ -1,0 +1,13 @@
+{
+  "fps": 30,
+  "durationInFrames": 90,
+  "theme": {},
+  "scenes": [{"type": "hook", "start": 0, "dur": 90, "title": "Run *build.py* first", "emoji": "🎬", "sub": "this is a placeholder"}],
+  "words": [],
+  "sfx": [],
+  "characters": {},
+  "voice": null,
+  "music": null,
+  "musicVolume": 0.09,
+  "captions": true
+}

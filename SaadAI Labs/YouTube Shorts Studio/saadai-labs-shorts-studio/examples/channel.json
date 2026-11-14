@@ -1,0 +1,68 @@
+{
+  "name": "Brain Snacks",
+  "niche": "weird science facts explained simply",
+  "audience": "curious 13-30 year olds who like 'wait, what?' facts",
+  "language": "en",
+  "style": "mix",
+  "formats": [
+    "explainer",
+    "story",
+    "myth-vs-fact",
+    "ranking"
+  ],
+  "theme": {
+    "bg1": "#0f1226",
+    "bg2": "#2b1d63",
+    "ink": "#ffffff",
+    "muted": "#c9c6ff",
+    "accent": "#ffd23f",
+    "accent2": "#ff5d8f",
+    "card": "#ffffff",
+    "cardInk": "#16142c",
+    "font": "Inter"
+  },
+  "voice": {
+    "provider": "auto",
+    "gender": "male",
+    "name": "",
+    "speed": 1.12,
+    "id": "",
+    "model": "eleven_multilingual_v2"
+  },
+  "music": "upbeat",
+  "musicVolume": 0.08,
+  "captionStyle": "pop",
+  "watermark": "",
+  "characters": {
+    "max": {
+      "skin": "#f2c39b",
+      "hair": "spiky",
+      "hairColor": "#2b1d14",
+      "shirt": "#4f7cff",
+      "pants": "#2a2f45"
+    },
+    "zoe": {
+      "skin": "#8d5a3b",
+      "hair": "curly",
+      "hairColor": "#1b1209",
+      "shirt": "#ff5d8f",
+      "pants": "#3a2f5c",
+      "glasses": true
+    },
+    "prof": {
+      "skin": "#e8b48f",
+      "hair": "bald",
+      "hairColor": "#9a9a9a",
+      "shirt": "#3fa66b",
+      "pants": "#4a3b2f",
+      "beard": true,
+      "glasses": true
+    }
+  },
+  "cta": "Follow for one weird fact a day",
+  "never": [
+    "medical advice",
+    "politics",
+    "living private individuals"
+  ]
+}

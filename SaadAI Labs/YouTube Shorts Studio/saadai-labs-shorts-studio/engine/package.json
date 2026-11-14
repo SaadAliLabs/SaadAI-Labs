@@ -1,0 +1,19 @@
+{
+  "name": "shorts-studio-engine",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Remotion engine for the SaadAI Labs Shorts Studio skill (2D vertical shorts)",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Short"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/fonts": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.535"
+  }
+}
