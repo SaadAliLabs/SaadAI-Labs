@@ -1,0 +1,82 @@
+{
+  "topic": "Why you can't tickle yourself",
+  "format": "explainer",
+  "hook_options": [
+    "Try tickling yourself. You can't. Here's why.",
+    "Your brain is secretly cancelling your own touch.",
+    "There's one person on Earth who can never tickle you: you."
+  ],
+  "music": "upbeat",
+  "scenes": [
+    {
+      "type": "hook",
+      "title": "You can't *tickle* yourself",
+      "emoji": "🤭",
+      "sub": "and your brain is the reason",
+      "say": "Try tickling yourself. Right now. You can't! And the reason… is kinda creepy."
+    },
+    {
+      "type": "icon",
+      "emoji": "🧠",
+      "label": "Your brain *predicts* it",
+      "orbit": [
+        "⚡",
+        "👆",
+        "🔮"
+      ],
+      "say": "Every time you move, your brain predicts exactly what you're about to feel."
+    },
+    {
+      "type": "compare",
+      "title": "Same touch, different brain",
+      "left": {
+        "emoji": "🫵",
+        "label": "Your hand",
+        "sub": "predicted"
+      },
+      "right": {
+        "emoji": "🪶",
+        "label": "Someone else",
+        "sub": "a surprise"
+      },
+      "winner": "right",
+      "say": "Your own hand? Predicted. So your brain turns the feeling down. But someone else's? Total surprise."
+    },
+    {
+      "type": "stat",
+      "value": 100,
+      "suffix": "ms",
+      "label": "faster than you can *think*",
+      "emoji": "⏱️",
+      "say": "And your cerebellum does all of this in about a hundred milliseconds!"
+    },
+    {
+      "type": "list",
+      "title": "It also explains",
+      "items": [
+        {
+          "emoji": "🗣️",
+          "text": "Why your voice sounds weird",
+          "cue": "voice"
+        },
+        {
+          "emoji": "👀",
+          "text": "Why the world doesn't shake",
+          "cue": "shake"
+        },
+        {
+          "emoji": "😴",
+          "text": "Why you twitch asleep",
+          "cue": "twitch"
+        }
+      ],
+      "say": "It's also why your recorded voice sounds weird, the world doesn't shake, and you twitch asleep."
+    },
+    {
+      "type": "end",
+      "text": "So next time, *try tickling yourself*",
+      "emoji": "🔁",
+      "say": "So go ahead. Try tickling yourself."
+    }
+  ]
+}

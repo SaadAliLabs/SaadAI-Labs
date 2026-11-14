@@ -1,0 +1,136 @@
+{
+  "topic": "The man who sold the Eiffel Tower (true history story, re-enacted by the channel's cartoon cast)",
+  "format": "story",
+  "music": "mystery",
+  "scenes": [
+    {
+      "type": "story",
+      "bg": "city",
+      "title": "He sold the *Eiffel Tower*. Twice.",
+      "camera": "punch",
+      "cast": [
+        {
+          "id": "max",
+          "x": 0.5,
+          "expr": "smug",
+          "pose": "hips",
+          "speaking": true
+        }
+      ],
+      "props": [
+        {
+          "emoji": "🗼",
+          "x": 0.82,
+          "y": 0.42,
+          "size": 230,
+          "anim": "float"
+        }
+      ],
+      "say": "This guy sold the Eiffel Tower. Twice!"
+    },
+    {
+      "type": "story",
+      "bg": "office",
+      "camera": "zoom",
+      "cast": [
+        {
+          "id": "max",
+          "x": 0.3,
+          "expr": "happy",
+          "pose": "point",
+          "speaking": true
+        },
+        {
+          "id": "prof",
+          "x": 0.74,
+          "expr": "thinking",
+          "pose": "think",
+          "flip": true
+        }
+      ],
+      "bubble": {
+        "who": "max",
+        "text": "The city can't afford to repair it."
+      },
+      "say": "He told scrap dealers the city couldn't afford to fix it anymore."
+    },
+    {
+      "type": "story",
+      "bg": "office",
+      "camera": "shake",
+      "cast": [
+        {
+          "id": "prof",
+          "x": 0.5,
+          "expr": "shocked",
+          "pose": "cheer"
+        }
+      ],
+      "props": [
+        {
+          "emoji": "💰",
+          "x": 0.25,
+          "y": 0.35,
+          "anim": "fall",
+          "cue": "paid"
+        },
+        {
+          "emoji": "💰",
+          "x": 0.75,
+          "y": 0.3,
+          "anim": "fall",
+          "cue": "bribe"
+        }
+      ],
+      "say": "One dealer believed him. Paid him! And even slipped him a bribe."
+    },
+    {
+      "type": "story",
+      "bg": "night",
+      "camera": "pan",
+      "cast": [
+        {
+          "id": "max",
+          "x": 0.5,
+          "expr": "smug",
+          "pose": "run",
+          "speaking": true
+        }
+      ],
+      "props": [
+        {
+          "emoji": "🧳",
+          "x": 0.25,
+          "y": 0.55,
+          "anim": "bounce"
+        }
+      ],
+      "say": "Then he grabbed the cash… and fled the country."
+    },
+    {
+      "type": "story",
+      "bg": "city",
+      "camera": "zoom",
+      "cast": [
+        {
+          "id": "prof",
+          "x": 0.5,
+          "expr": "sad",
+          "pose": "facepalm"
+        }
+      ],
+      "bubble": {
+        "who": "prof",
+        "text": "I'm too embarrassed to report it...",
+        "kind": "think"
+      },
+      "say": "But the victim? Too embarrassed to tell the police."
+    },
+    {
+      "type": "end",
+      "text": "So he came back and *sold it again*",
+      "emoji": "🗼",
+      "say": "So he came back… and sold it again."
+    }
+  ]
+}
