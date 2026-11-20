@@ -8,7 +8,7 @@ import argparse
 import shutil
 from pathlib import Path
 
-from common import fmt_ts, load_json, output_root
+from common import fmt_ts, load_json, output_root, publish
 
 
 def main():
@@ -43,6 +43,11 @@ def main():
         if post.exists():
             shutil.copy2(post, dest / f"{name}_post.txt")
         print(f"Approved: {dest / (name + '.mp4')}")
+        for f in (dest / f"{name}.mp4", dest / f"{name}_post.txt"):
+            if f.exists():
+                web = publish(f, "approved_" + f.name)
+                if web:
+                    print(f"  download (Claude web): {web}")
 
 
 if __name__ == "__main__":

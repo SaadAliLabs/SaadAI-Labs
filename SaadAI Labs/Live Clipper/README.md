@@ -34,7 +34,9 @@ Live Clipper then:
 | `saadai-labs-live-clipper/setup.md` | Full setup guide |
 | `saadai-labs-live-clipper/config.json` | Settings: keyword, clips per hour, clip length, captions, effects |
 | `saadai-labs-live-clipper/blocklist.json` | Optional list of streamers to skip |
-| `saadai-labs-live-clipper/scripts/` | Python scripts: find streams, read chat, score, cut, captions, sound effects, review |
+| `saadai-labs-live-clipper/scripts/` | Python scripts: find streams, read chat, score, cut, captions, sound effects, review, settings |
+| `saadai-labs-live-clipper/assets/sfx/` | Sound effects: whoosh, riser, boom, pop, ding, glitch |
+| `saadai-labs-live-clipper/Live Clipper.bat` / `.command` | One-click launchers (Windows / Mac) for running a job from the Claude desktop app |
 
 ---
 
@@ -49,6 +51,10 @@ Live Clipper then:
 5. **Run it** in Claude Code: `run live clipper`, `clip this stream: <link>` or `find GTA 6 streams to clip`.
 
 The first caption run downloads the Whisper speech model (about 500 MB), once.
+
+Change settings by just asking ("give me 5 clips", "no sound effects", "use the center crop").
+
+**Works best on your own PC.** YouTube often blocks cloud servers with "Sign in to confirm you're not a bot", so on Claude web the download step can fail. Run it in Claude Code on your computer.
 
 ---
 

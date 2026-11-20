@@ -48,27 +48,75 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+# ---------- where files go ----------
+# Claude Code: the skill folder is writable, so work files go in <skill>/output (as before).
+# Claude web (claude.ai): the skill folder is READ-ONLY, so work files go in ~/LiveClipper and the
+# finished clips are also copied to /mnt/user-data/outputs, where the user can download them.
+WEB_OUTPUTS = Path("/mnt/user-data/outputs")
+
+
+def is_web():
+    """True inside the claude.ai code-execution sandbox."""
+    return WEB_OUTPUTS.is_dir() or not _writable(SKILL_DIR)
+
+
+def _writable(folder):
+    try:
+        folder = Path(folder)
+        folder.mkdir(parents=True, exist_ok=True)
+        probe = folder / ".write_test"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink()
+        return True
+    except OSError:
+        return False
+
+
+def _data_root(base_cfg):
+    custom = (base_cfg.get("output_dir") or "").strip()
+    if custom:
+        return Path(os.path.expanduser(custom))
+    for cand in (SKILL_DIR / "output", Path.home() / "LiveClipper", Path("/tmp") / "LiveClipper"):
+        if _writable(cand):
+            return cand
+    sys.exit("No writable folder for clips. Set output_dir in config.json.")
+
+
+def user_config_path():
+    """Settings the user changed. Lives next to the clips, so it works when the skill folder is read-only."""
+    return _data_root(load_json(CONFIG_PATH, {})) / "config.json"
+
+
 def load_config():
-    return load_json(CONFIG_PATH, {})
+    cfg = dict(load_json(CONFIG_PATH, {}))
+    cfg.update(load_json(user_config_path(), {}) or {})
+    return cfg
 
 
 def load_env():
-    """Read KEY=VALUE lines from the skill's .env into os.environ (no extra package needed)."""
-    env = SKILL_DIR / ".env"
-    if env.exists():
-        for line in env.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+    """Read KEY=VALUE lines from .env (skill folder or data folder) into os.environ."""
+    for env in (SKILL_DIR / ".env", output_root() / ".env"):
+        if env.exists():
+            for line in env.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
 def output_root():
-    cfg = load_config()
-    custom = (cfg.get("output_dir") or "").strip()
-    root = Path(os.path.expanduser(custom)) if custom else SKILL_DIR / "output"
+    root = _data_root(load_config())
     root.mkdir(parents=True, exist_ok=True)
     return root
+
+
+def publish(path, name=None):
+    """On Claude web, copy a finished file to /mnt/user-data/outputs so the user can download it."""
+    if not WEB_OUTPUTS.is_dir():
+        return None
+    dest = WEB_OUTPUTS / (name or Path(path).name)
+    shutil.copy2(path, dest)
+    return dest
 
 
 def new_run_dir(video_id):

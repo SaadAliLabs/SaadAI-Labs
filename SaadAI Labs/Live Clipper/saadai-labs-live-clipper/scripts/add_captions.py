@@ -26,7 +26,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from common import ffmpeg_exe, load_config, load_json, run, save_json
+from common import ffmpeg_exe, load_config, load_json, publish, run, save_json
 from sfx import ensure_sfx
 
 W, H = 1080, 1920
@@ -319,6 +319,10 @@ def render(run_dir, only, cfg):
         m["final"] = str(final)
         m["titles"] = titles
         print(f"Clip {m['clip']}: {final.name}")
+        for f in (final, Path(str(base) + "_post.txt")):
+            web = publish(f, f"{run_dir.name}_{f.name}")
+            if web:
+                print(f"  download (Claude web): {web}")
     save_json(run_dir / "moments.json", data)
 
 

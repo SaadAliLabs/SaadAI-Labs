@@ -1,7 +1,10 @@
-"""One-command setup (Mac and Windows):  python3 scripts/setup.py   (Windows: py scripts\\setup.py)
+"""One-command setup:  python3 scripts/setup.py   (Windows: py scripts\\setup.py)
 
-Creates .venv inside the skill folder with Python 3.10-3.13 if available (faster-whisper wheels),
-installs requirements.txt, checks ffmpeg and Node/Deno, and prints the python path to use.
+Claude Code (Mac/Windows): creates .venv inside the skill folder with Python 3.10-3.13 if available
+(faster-whisper wheels), installs requirements.txt, checks ffmpeg and Node/Deno.
+Claude web (claude.ai): the skill folder is read-only, so packages go into the sandbox's own Python
+(no .venv) and setup checks that YouTube can be reached. Use --web to force this mode.
+Prints the python to use (PY) at the end.
 """
 import os
 import shutil
@@ -33,7 +36,51 @@ def pick_python():
     return [sys.executable]
 
 
+def can_write(folder):
+    try:
+        probe = folder / ".write_test"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink()
+        return True
+    except OSError:
+        return False
+
+
+def web_setup():
+    """claude.ai sandbox: install into the current Python, then check the network."""
+    req = str(SKILL / "requirements.txt")
+    print("Claude web mode: installing packages into the sandbox Python (yt-dlp, faster-whisper, Pillow, imageio-ffmpeg)...")
+    base = [sys.executable, "-m", "pip", "install", "-q", "-r", req]
+    if subprocess.run(base).returncode != 0:
+        subprocess.check_call(base + ["--break-system-packages"])
+    print("ffmpeg:", shutil.which("ffmpeg") or "using the bundled imageio-ffmpeg copy")
+    if not (shutil.which("deno") or shutil.which("node")):
+        print("WARNING: no Node.js or Deno in this sandbox - some YouTube formats may fail.")
+    import ssl
+    import urllib.request
+    try:
+        import certifi
+        ctx = ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        ctx = ssl.create_default_context()
+    ok = True
+    for host in ("https://www.youtube.com", "https://huggingface.co"):
+        try:
+            urllib.request.urlopen(host, timeout=15, context=ctx)
+            print("network:", host, "OK")
+        except Exception as exc:  # noqa: BLE001
+            ok = False
+            print("network:", host, "BLOCKED", f"({str(exc)[:80]})")
+    if not ok:
+        print("\nNETWORK BLOCKED. In claude.ai go to Settings > Capabilities > Code execution and allow these")
+        print("domains (or 'All domains'): youtube.com, *.youtube.com, *.googlevideo.com, *.ytimg.com,")
+        print("youtubei.googleapis.com, huggingface.co, *.huggingface.co, *.hf.co  - then start a NEW chat.")
+    print("\nSetup done. PY =", sys.executable)
+
+
 def main():
+    if "--web" in sys.argv or Path("/mnt/user-data").is_dir() or not can_write(SKILL):
+        return web_setup()
     vpy = VENV / ("Scripts/python.exe" if WIN else "bin/python")
     if not vpy.exists():
         py = pick_python()
