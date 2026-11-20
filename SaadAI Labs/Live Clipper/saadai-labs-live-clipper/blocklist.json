@@ -1,0 +1,4 @@
+{
+  "_help": "Optional. Every YouTube stream can be clipped. Add a streamer here only if you want the skill to skip them (for example they asked people not to clip, or sent takedowns). Match by channel_id (UC...), handle or name.",
+  "streamers": []
+}

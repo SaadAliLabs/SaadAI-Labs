@@ -1,0 +1,5 @@
+yt-dlp[default]>=2025.11.12
+faster-whisper>=1.1.0
+Pillow>=10.0
+imageio-ffmpeg>=0.5.1
+certifi>=2024.2.2

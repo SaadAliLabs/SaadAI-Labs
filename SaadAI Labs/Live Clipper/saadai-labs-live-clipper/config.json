@@ -1,0 +1,42 @@
+{
+  "search_keyword": "GTA 6",
+  "search_max_results": 10,
+  "show_blocked": false,
+
+  "watch_minutes": 10,
+
+  "window_seconds": 10,
+  "skip_start_minutes": 3,
+  "skip_end_minutes": 2,
+  "baseline_minutes": 10,
+  "min_speed_ratio": 3.0,
+  "merge_gap_seconds": 120,
+  "clips_per_hour": 3,
+  "max_clips_per_run": 10,
+  "hype_keywords": [
+    "clip", "clip that", "clip it", "clipped", "lmao", "lmfao", "lol", "no way", "nooo", "insane", "crazy",
+    "w", "dub", "omg", "wtf", "holy", "goat", "hahaha",
+    "kya", "kia", "yaar", "uff", "wah", "kamaal", "pagal", "zabardast", "mazaa", "baap"
+  ],
+  "hype_emojis": ["💀", "😂", "🤣", "🔥", "😭", "😱", "🤯", "😳", "🐐", "❤️"],
+
+  "clip_seconds": 40,
+  "lead_seconds": 12,
+  "crop_mode": "blur_fit",
+  "max_source_height": 1080,
+
+  "whisper_model": "small",
+  "whisper_language": null,
+  "caption_words_per_line": 3,
+  "caption_color": "#FFFFFF",
+  "caption_highlight": "#FFD60A",
+  "hook_seconds": 2.0,
+  "sound_effects": true,
+  "sfx_volume": 0.45,
+  "caption_pops": false,
+  "punch_in": true,
+  "punch_zoom": 0.14,
+  "font_path": null,
+
+  "output_dir": ""
+}
